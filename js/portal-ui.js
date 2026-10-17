@@ -58,7 +58,7 @@
       var label = document.getElementById('userLabel');
       var av = document.getElementById('userAv');
       if (name) name.textContent = session.name || session.user;
-      if (label) label.textContent = session.label || (session.role === 'fisio' ? 'Fisioterapeuta' : 'Paciente');
+      if (label) label.textContent = session.role === 'fisio' ? (session.label || 'Fisioterapeuta') : 'Paciente';
       if (av) av.textContent = (session.name || session.user).charAt(0).toUpperCase();
     },
 

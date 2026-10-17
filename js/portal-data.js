@@ -19,7 +19,7 @@
 
   // Credenciales de demostración solicitadas
   var CREDENTIALS = {
-    cliente: { pass: '123465', role: 'cliente', name: 'María García', label: 'Paciente · LCA rodilla derecha', key: 'cliente' },
+    cliente: { pass: '123465', role: 'cliente', name: 'María García', label: 'Paciente', key: 'cliente' },
     fisio:   { pass: '123456', role: 'fisio',   name: 'Álvaro Picazo', label: 'Fisioterapeuta', key: 'fisio' }
   };
 
@@ -138,7 +138,7 @@
       var reg = findUserByEmail(u);
       if (reg && reg.pass === pass) {
         if (!reg.paid) return { error: 'unpaid', user: reg };
-        return this._setSession({ kind: 'registered', role: 'cliente', user: reg.email, key: reg.id, userId: reg.id, name: reg.name, label: 'Paciente · ' + (reg.injury || 'Rehabilitación') });
+        return this._setSession({ kind: 'registered', role: 'cliente', user: reg.email, key: reg.id, userId: reg.id, name: reg.name, label: 'Paciente' });
       }
       return null;
     },
