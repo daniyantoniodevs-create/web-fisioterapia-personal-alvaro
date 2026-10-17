@@ -255,6 +255,39 @@
       return regs.concat(demo);
     },
 
+    /** Ficha clínica de un paciente (solo para el panel del fisio). */
+    getPatientDetail: function (id) {
+      var base = this.getPatients().filter(function (p) { return p.id === id; })[0];
+      if (!base) return null;
+      var d = { id: base.id, name: base.name, injury: base.injury, phase: base.phase, overall: base.progress,
+        status: base.status, last: base.last, surgeryDate: null, goal: '', notes: '', rom: null, strength: null,
+        nextSession: null, sessions: [], email: null, plan: null, since: null };
+      var pr = null;
+      if (base.key === 'cliente') {
+        pr = read(KEYS.progress, DEFAULT_PROGRESS);
+        d.injury = pr.injury;
+        d.email = 'cliente (demo)';
+        d.plan = PLAN.name;
+      } else if (base.registered) {
+        var u = findUserById(base.id);
+        pr = (u && u.progress) || {};
+        d.email = u && u.email; d.plan = u && u.plan; d.since = u && (u.paidAt || u.createdAt);
+        d.goal = (u && u.goal) || ''; d.notes = (u && u.notes) || '';
+      }
+      if (pr) {
+        d.surgeryDate = pr.surgeryDate || null;
+        d.goal = pr.goal || d.goal;
+        d.notes = pr.notes || d.notes;
+        d.phase = pr.currentPhase || d.phase;
+        d.overall = typeof pr.overall === 'number' ? pr.overall : d.overall;
+        d.rom = pr.rangeOfMotion || null;
+        d.strength = pr.strength || null;
+        d.nextSession = pr.nextSession || null;
+        d.sessions = pr.sessions || [];
+      }
+      return d;
+    },
+
     /* --- Chats por usuario --- */
     getMessages: function (key) {
       key = key || this._key();

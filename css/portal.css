@@ -368,3 +368,21 @@ button { font-family: inherit; cursor: pointer; }
   .btn { padding: 13px 18px; font-size: .92rem; }
   .topbar-actions { width: 100%; }
 }
+
+/* ---- Ficha clínica del paciente (panel fisio) ---- */
+.row-link { cursor: pointer; transition: background .2s; }
+.row-link:hover, .row-link:focus { background: #fff5f4; outline: none; }
+.muted-hint { font-size: .8rem; color: var(--muted); }
+.pf-alert { background: #fff5f4; border: 1px solid #f6c3bd; color: #8f1525; border-radius: 12px; padding: 14px 16px; font-size: .92rem; margin-bottom: 18px; }
+.pf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.pf-field { background: #faf6f5; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.pf-field span { display: block; font-size: .74rem; color: var(--muted); margin-bottom: 4px; }
+.pf-field strong { font-size: .98rem; word-break: break-word; }
+.pf-h { font-size: .95rem; margin: 6px 0 10px; }
+.pf-notes { color: var(--muted); font-size: .9rem; margin-bottom: 16px; }
+.pf-sessions { list-style: none; display: grid; gap: 8px; margin-bottom: 16px; padding: 0; }
+.pf-sessions li { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-size: .88rem; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+.pf-sessions em { color: var(--muted); flex-basis: 100%; }
+.pf-date { font-weight: 600; min-width: 90px; }
+.pf-private { font-size: .76rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+@media (max-width: 720px) { .pf-grid { grid-template-columns: 1fr 1fr; } }

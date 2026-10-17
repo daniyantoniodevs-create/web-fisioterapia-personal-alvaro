@@ -32,7 +32,7 @@
     document.querySelector('#recentTable tbody').innerHTML = rows;
 
     document.querySelector('#patientsTable tbody').innerHTML = patients.map(function (p) {
-      return '<tr><td><strong>' + p.name + '</strong></td><td>' + p.injury + '</td>' +
+      return '<tr class="row-link" data-patient="' + p.id + '" tabindex="0"><td><strong>' + p.name + '</strong></td><td>' + p.injury + '</td>' +
              '<td><span class="pill info">Fase ' + p.phase + '</span></td>' +
              '<td><div style="display:flex;align-items:center;gap:10px;"><div class="bar" style="width:90px;"><span style="width:' + p.progress + '%"></span></div>' + p.progress + '%</div></td>' +
              '<td>' + formatDate(p.last) + '</td>' +
@@ -40,7 +40,7 @@
     }).join('');
   }
   function patientRow(p) {
-    return '<tr><td><strong>' + p.name + '</strong></td><td>' + p.injury + '</td>' +
+    return '<tr class="row-link" data-patient="' + p.id + '" tabindex="0"><td><strong>' + p.name + '</strong></td><td>' + p.injury + '</td>' +
            '<td><span class="pill info">Fase ' + p.phase + '</span></td>' +
            '<td><div style="display:flex;align-items:center;gap:10px;"><div class="bar" style="width:90px;"><span style="width:' + p.progress + '%"></span></div>' + p.progress + '%</div></td>' +
            '<td>' + statusPill(p.status) + '</td></tr>';
@@ -50,6 +50,57 @@
     return '<span class="pill ' + cls + '">' + s + '</span>';
   }
   renderDashboard();
+
+  /* ---------- Ficha clínica del paciente ---------- */
+  var pModal = document.getElementById('patientModal');
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
+  function field(label, value) {
+    return '<div class="pf-field"><span>' + label + '</span><strong>' + (value ? value : '—') + '</strong></div>';
+  }
+  function openPatient(id) {
+    var d = Portal.getPatientDetail(id);
+    if (!d) return;
+    document.getElementById('pmName').textContent = d.name;
+    var next = d.nextSession && /^\d{4}-\d{2}-\d{2}/.test(d.nextSession) ? formatDate(d.nextSession.slice(0, 10)) + d.nextSession.slice(10) : d.nextSession;
+    var sessions = d.sessions.slice(0, 5).map(function (s) {
+      return '<li><span class="pf-date">' + formatDate(s.date) + '</span>' +
+        '<span>Dolor <strong>' + esc(s.pain) + '/10</strong></span>' +
+        (s.rom != null ? '<span>Flexión <strong>' + esc(s.rom) + '°</strong></span>' : '') +
+        (s.notes ? '<em>' + esc(s.notes) + '</em>' : '') + '</li>';
+    }).join('');
+    document.getElementById('pmBody').innerHTML =
+      '<div class="pf-alert"><strong>' + esc(d.injury) + '</strong>' +
+        (d.surgeryDate ? ' — Intervención: ' + formatDate(d.surgeryDate) : '') +
+        '. En <strong>fase ' + esc(d.phase) + ' de 4</strong>.' +
+        (d.goal ? ' Objetivo: <em>' + esc(d.goal) + '</em>.' : '') + '</div>' +
+      '<div class="pf-grid">' +
+        field('Progreso global', d.overall != null ? d.overall + '%' : '') +
+        field('Flexión de rodilla', d.rom ? d.rom + '°' : '') +
+        field('Fuerza vs. pierna sana', d.strength ? d.strength + '%' : '') +
+        field('Próxima sesión', esc(next)) +
+        field('Estado', esc(d.status)) +
+        field('Última actividad', d.last ? formatDate(d.last) : '') +
+        field('Contacto', esc(d.email)) +
+        field('Plan', esc(d.plan)) +
+      '</div>' +
+      (d.notes ? '<h4 class="pf-h">Notas del paciente al registrarse</h4><p class="pf-notes">' + esc(d.notes) + '</p>' : '') +
+      '<h4 class="pf-h">Últimos registros del paciente</h4>' +
+      (sessions ? '<ul class="pf-sessions">' + sessions + '</ul>' : '<p class="pf-notes">Todavía no hay registros.</p>') +
+      '<p class="pf-private">Información clínica visible solo para el fisioterapeuta.</p>';
+    pModal.classList.add('show');
+  }
+  function closePatient() { pModal.classList.remove('show'); }
+  document.getElementById('pmClose').addEventListener('click', closePatient);
+  pModal.addEventListener('click', function (e) { if (e.target === pModal) closePatient(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePatient(); });
+  document.addEventListener('click', function (e) {
+    var row = e.target.closest('tr[data-patient]');
+    if (row) openPatient(row.getAttribute('data-patient'));
+  });
+  document.addEventListener('keydown', function (e) {
+    var row = e.target.closest && e.target.closest('tr[data-patient]');
+    if (row && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openPatient(row.getAttribute('data-patient')); }
+  });
 
   /* ---------- Vídeos: pestañas de fuente ---------- */
   var srcType = 'youtube';

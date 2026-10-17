@@ -26,12 +26,6 @@
   document.getElementById('phasePill').textContent = 'Fase ' + P.currentPhase + ' de 4';
 
   /* ---------- Resumen / KPIs ---------- */
-  document.getElementById('injuryInfo').innerHTML =
-    '<strong>' + P.injury + '</strong>' +
-    (P.surgeryDate ? ' — Intervención: ' + formatDate(P.surgeryDate) : '') +
-    '. Actualmente en <strong>fase ' + P.currentPhase + '</strong> de tu recuperación.' +
-    (P.goal ? ' Objetivo: <em>' + P.goal + '</em>.' : '');
-
   animateNum(document.getElementById('kpiOverall'), P.overall, '%');
   animateNum(document.getElementById('kpiRom'), P.rangeOfMotion, '°');
   animateNum(document.getElementById('kpiStrength'), P.strength, '%');

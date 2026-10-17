@@ -110,7 +110,7 @@
       <!-- ===== Vista: Pacientes ===== -->
       <section class="view" id="view-pacientes">
         <div class="panel">
-          <div class="panel-head"><h3>Todos los pacientes</h3></div>
+          <div class="panel-head"><h3>Todos los pacientes</h3><span class="muted-hint">Pulsa un paciente para ver su ficha</span></div>
           <div style="overflow-x:auto;">
             <table class="tbl" id="patientsTable">
               <thead><tr><th>Paciente</th><th>Lesión</th><th>Fase</th><th>Progreso</th><th>Última visita</th><th>Estado</th></tr></thead>
@@ -218,6 +218,17 @@
   </div>
 
   <!-- Modal de vídeo -->
+  <!-- Ficha clínica del paciente (solo fisio) -->
+  <div class="modal-back" id="patientModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="pmName">Paciente</h3>
+        <button class="modal-close" id="pmClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      </div>
+      <div class="modal-body" id="pmBody"></div>
+    </div>
+  </div>
+
   <div class="modal-back" id="videoModal">
     <div class="modal">
       <div class="modal-head">
