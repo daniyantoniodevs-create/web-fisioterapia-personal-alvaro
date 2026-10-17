@@ -113,7 +113,7 @@
           '<div class="ex-thumb" data-play="' + v.id + '">' +
             Portal.thumbHtml(v) +
             '<span class="ex-tag">' + (v.category || 'Ejercicio') + '</span>' +
-            (v.demo ? '<span class="ex-tag" style="left:auto;right:12px;background:rgba(249,115,22,.9);">vídeo demo</span>' : '') +
+            (v.demo ? '<span class="ex-tag" style="left:auto;right:12px;background:rgba(242, 169, 59,.9);">vídeo demo</span>' : '') +
             '<div class="ex-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>' +
           '</div>' +
           '<div class="ex-body">' +

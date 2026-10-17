@@ -208,7 +208,7 @@
     chatBox.innerHTML = msgs.map(function (m) {
       var mine = m.from === 'fisio';
       return '<div style="align-self:' + (mine ? 'flex-end' : 'flex-start') + ';max-width:75%;">' +
-             '<div style="background:' + (mine ? 'var(--grad)' : '#eef4f8') + ';color:' + (mine ? '#fff' : 'var(--navy)') + ';padding:11px 15px;border-radius:14px;' + (mine ? 'border-bottom-right-radius:4px;' : 'border-bottom-left-radius:4px;') + 'font-size:.92rem;">' + escapeHtml(m.text) + '</div>' +
+             '<div style="background:' + (mine ? 'var(--grad)' : '#f6eeed') + ';color:' + (mine ? '#fff' : 'var(--dark)') + ';padding:11px 15px;border-radius:14px;' + (mine ? 'border-bottom-right-radius:4px;' : 'border-bottom-left-radius:4px;') + 'font-size:.92rem;">' + escapeHtml(m.text) + '</div>' +
              '<div style="font-size:.72rem;color:var(--muted);margin-top:4px;text-align:' + (mine ? 'right' : 'left') + ';">' + (mine ? 'Tú (Álvaro)' : currentChatName.split(' ')[0]) + ' · ' + m.date + '</div></div>';
     }).join('');
     chatBox.scrollTop = chatBox.scrollHeight;

@@ -8,6 +8,7 @@
   var stage = document.getElementById('kneeStage');
   var wrap = document.getElementById('knee3d');
   if (!stage || !wrap) return;
+  window.kneeSelect = function (part) { select(part); };
 
   var persp = stage.parentElement;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,11 +50,14 @@
     menisco: { t: 'Menisco', d: 'Dos cartílagos en forma de C que amortiguan y reparten la carga entre fémur y tibia, además de dar estabilidad. Es habitual que se lesione junto al LCA.' },
     femur: { t: 'Fémur', d: 'El hueso del muslo. Sus cóndilos forman la parte superior de la articulación de la rodilla, sobre la que esta se flexiona y extiende.' },
     tibia: { t: 'Tibia', d: 'El hueso de la espinilla. Su meseta tibial recibe toda la carga de la rodilla y es donde se anclan los ligamentos cruzados.' },
+    colateral: { t: 'Ligamentos colaterales', d: 'El colateral medial (interno) y el lateral (externo) estabilizan la rodilla frente a fuerzas laterales. El medial se lesiona a menudo en giros y choques, a veces junto al LCA.' },
+    tendon: { t: 'Tendón rotuliano y cuadricipital', d: 'Transmiten la fuerza del cuádriceps a la tibia a través de la rótula. Su sobrecarga produce la tendinopatía rotuliana o «rodilla del saltador».' },
     patella: { t: 'Rótula', d: 'El hueso de la rodilla por delante. Protege la articulación y mejora la palanca del cuádriceps al estirar la pierna.' }
   };
 
   function select(part) {
     if (!INFO[part]) return;
+    try { window.dispatchEvent(new CustomEvent('kneeselect', { detail: part })); } catch (e) {}
     wrap.classList.add('has-sel');
     stage.querySelectorAll('[data-part]').forEach(function (el) {
       el.classList.toggle('active', el.getAttribute('data-part') === part);

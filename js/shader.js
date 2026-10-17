@@ -25,11 +25,11 @@
     'uniform float u_time;',
     'uniform vec2 u_res;',
     // paleta de marca
-    'const vec3 navy = vec3(0.055,0.145,0.255);',
-    'const vec3 teal = vec3(0.078,0.722,0.651);',
-    'const vec3 sky  = vec3(0.055,0.647,0.914);',
-    'const vec3 mint = vec3(0.176,0.831,0.749);',
-    'const vec3 viol = vec3(0.388,0.400,0.945);',
+    'const vec3 navy = vec3(0.055,0.031,0.039);',  // casi negro cálido
+    'const vec3 teal = vec3(0.560,0.063,0.110);',  // granate
+    'const vec3 sky  = vec3(0.839,0.157,0.224);',  // rojo Graus
+    'const vec3 mint = vec3(0.290,0.039,0.075);',  // vino oscuro
+    'const vec3 viol = vec3(1.000,0.420,0.340);',  // coral
     'void main(){',
     '  vec2 uv = gl_FragCoord.xy / u_res.xy;',
     '  float ar = u_res.x / u_res.y;',
@@ -41,15 +41,18 @@
     '  vec2 c3 = vec2((0.50 + 0.28*sin(t*0.6+2.0)) * ar, 0.82 + 0.16*cos(t*1.1));',
     '  vec2 c4 = vec2((0.82 + 0.16*sin(t*1.4)) * ar, 0.22 + 0.20*cos(t*0.7));',
     '  vec3 col = navy;',
-    '  col = mix(col, teal, smoothstep(0.62, 0.0, distance(p,c1)));',
-    '  col = mix(col, sky,  smoothstep(0.70, 0.0, distance(p,c2)));',
+    '  col = mix(col, teal, smoothstep(0.70, 0.0, distance(p,c1)) * 0.85);',
+    '  col = mix(col, sky,  smoothstep(0.62, 0.0, distance(p,c2)) * 0.55);',
     '  col = mix(col, mint, smoothstep(0.52, 0.0, distance(p,c3)));',
-    '  col = mix(col, viol, smoothstep(0.55, 0.0, distance(p,c4)) * 0.55);',
+    '  col = mix(col, viol, smoothstep(0.45, 0.0, distance(p,c4)) * 0.22);',
+    // líneas de "movimiento" sutiles (como un electromiograma)
+    '  float wave = abs(uv.y - 0.5 - 0.12*sin(uv.x*6.0 + t*6.0) * sin(t*2.0+uv.x*2.0));',
+    '  col += vec3(1.0,0.25,0.3) * smoothstep(0.006, 0.0, wave) * 0.10;',
     // grano sutil para textura premium
     '  float g = fract(sin(dot(uv, vec2(12.9898,78.233))) * 43758.5453);',
     '  col += (g - 0.5) * 0.025;',
     // viñeteado suave
-    '  col *= 1.0 - 0.28 * distance(uv, vec2(0.5));',
+    '  col *= 1.0 - 0.45 * distance(uv, vec2(0.5));',
     '  gl_FragColor = vec4(col, 1.0);',
     '}'
   ].join('\n');

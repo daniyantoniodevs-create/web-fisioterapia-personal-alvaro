@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" role="img" aria-label="Anatomía de la rodilla y ligamento cruzado">
   <defs>
     <linearGradient id="kb" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#e0f7f4"/>
-      <stop offset="1" stop-color="#dcefff"/>
+      <stop offset="0" stop-color="#fbefee"/>
+      <stop offset="1" stop-color="#f6e6e5"/>
     </linearGradient>
   </defs>
   <rect width="420" height="460" rx="28" fill="url(#kb)"/>
@@ -13,18 +13,18 @@
   <!-- meniscus -->
   <ellipse cx="210" cy="280" rx="78" ry="18" fill="#bae6fd" opacity=".8"/>
   <!-- ACL (highlighted) -->
-  <path d="M172 250 L255 305" stroke="#f97316" stroke-width="11" stroke-linecap="round"/>
+  <path d="M172 250 L255 305" stroke="#f2a93b" stroke-width="11" stroke-linecap="round"/>
   <!-- PCL -->
-  <path d="M255 248 L170 308" stroke="#14b8a6" stroke-width="11" stroke-linecap="round"/>
+  <path d="M255 248 L170 308" stroke="#d62839" stroke-width="11" stroke-linecap="round"/>
   <!-- patella -->
   <ellipse cx="135" cy="270" rx="26" ry="34" fill="#fff" stroke="#cbd5e1" stroke-width="3"/>
   <!-- labels -->
   <g font-family="Poppins, Arial" font-size="15" font-weight="600">
-    <circle cx="320" cy="270" r="6" fill="#f97316"/>
-    <text x="334" y="275" fill="#0f2a43">LCA (cruzado anterior)</text>
-    <circle cx="320" cy="305" r="6" fill="#14b8a6"/>
-    <text x="334" y="310" fill="#0f2a43">LCP (cruzado posterior)</text>
-    <circle cx="320" cy="340" r="6" fill="#38bdf8"/>
-    <text x="334" y="345" fill="#0f2a43">Menisco</text>
+    <circle cx="320" cy="270" r="6" fill="#f2a93b"/>
+    <text x="334" y="275" fill="#1b1214">LCA (cruzado anterior)</text>
+    <circle cx="320" cy="305" r="6" fill="#d62839"/>
+    <text x="334" y="310" fill="#1b1214">LCP (cruzado posterior)</text>
+    <circle cx="320" cy="340" r="6" fill="#ff8a7a"/>
+    <text x="334" y="345" fill="#1b1214">Menisco</text>
   </g>
 </svg>

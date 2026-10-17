@@ -194,6 +194,69 @@
     go(0); reset();
   })();
 
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Titular que entra palabra a palabra ---- */
+  document.querySelectorAll('.split').forEach(function (el) {
+    var delay = 0.15;
+    function wrap(content) {
+      var w = document.createElement('span'); w.className = 'w';
+      var inner = document.createElement('span');
+      inner.style.animationDelay = delay.toFixed(2) + 's';
+      delay += 0.09;
+      if (typeof content === 'string') inner.textContent = content; else inner.appendChild(content);
+      w.appendChild(inner);
+      return w;
+    }
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    el.textContent = '';
+    nodes.forEach(function (n) {
+      if (n.nodeType === 3) {
+        n.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) el.appendChild(document.createTextNode(' '));
+          else el.appendChild(wrap(part));
+        });
+      } else {
+        el.appendChild(wrap(n));
+      }
+    });
+  });
+
+  /* ---- Botones magnéticos ---- */
+  if (window.matchMedia('(hover: hover)').matches && !reduceMotion) {
+    document.querySelectorAll('.magnetic, .nav-cta').forEach(function (b) {
+      b.addEventListener('mousemove', function (e) {
+        var r = b.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) * 0.22;
+        var y = (e.clientY - r.top - r.height / 2) * 0.3;
+        b.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      });
+      b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+    });
+  }
+
+  /* ---- Líneas que se dibujan al hacer scroll (pulso / electromiograma) ---- */
+  var drawPaths = Array.prototype.slice.call(document.querySelectorAll('path[data-draw]'));
+  drawPaths.forEach(function (p) {
+    var len = p.getTotalLength ? p.getTotalLength() : 1000;
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = reduceMotion ? 0 : len;
+    p._len = len;
+  });
+  function drawOnScroll() {
+    var vh = window.innerHeight;
+    drawPaths.forEach(function (p) {
+      var r = p.closest('svg').getBoundingClientRect();
+      var prog = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (vh * 0.5)));
+      p.style.strokeDashoffset = (p._len * (1 - prog)).toFixed(1);
+    });
+  }
+  if (drawPaths.length && !reduceMotion) {
+    window.addEventListener('scroll', drawOnScroll, { passive: true });
+    drawOnScroll();
+  }
+
   /* ---- Año dinámico en el footer ---- */
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();

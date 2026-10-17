@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Los enlaces con # (secciones) no se indexan por separado: basta con la página principal. -->
   <url>
     <loc>https://alvaropicazofisioterapia.es/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://alvaropicazofisioterapia.es/img/og-image.jpg</image:loc>
+    </image:image>
   </url>
   <url>
-    <loc>https://alvaropicazofisioterapia.es/#servicios</loc>
+    <loc>https://alvaropicazofisioterapia.es/register.html</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alvaropicazofisioterapia.es/#sobre-mi</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://alvaropicazofisioterapia.es/#ligamento</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://alvaropicazofisioterapia.es/#tarifas</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://alvaropicazofisioterapia.es/#contacto</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>

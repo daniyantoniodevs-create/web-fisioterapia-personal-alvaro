@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 560" role="img" aria-label="Fisioterapia y readaptación deportiva">
   <defs>
     <linearGradient id="hb" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0ea5e9"/>
-      <stop offset="1" stop-color="#14b8a6"/>
+      <stop offset="0" stop-color="#8f1525"/>
+      <stop offset="1" stop-color="#d62839"/>
     </linearGradient>
     <linearGradient id="hs" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity=".25"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
     <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0f2a43" flood-opacity="0.18"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#1b1214" flood-opacity="0.18"/>
     </filter>
   </defs>
 
@@ -23,14 +23,14 @@
     <path d="M255 270 L225 410"/>
   </g>
   <circle cx="255" cy="270" r="34" fill="#fff"/>
-  <circle cx="255" cy="270" r="16" fill="#14b8a6"/>
+  <circle cx="255" cy="270" r="16" fill="#d62839"/>
   <circle cx="200" cy="150" r="22" fill="#fff"/>
   <circle cx="225" cy="410" r="20" fill="#fff"/>
 
   <!-- pulse line card -->
   <g transform="translate(310 300)">
-    <rect x="0" y="0" width="220" height="120" rx="20" fill="#0f2a43"/>
-    <path d="M20 70 L55 70 L72 38 L95 100 L118 55 L135 70 L200 70" fill="none" stroke="#2dd4bf" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="0" y="0" width="220" height="120" rx="20" fill="#1b1214"/>
+    <path d="M20 70 L55 70 L72 38 L95 100 L118 55 L135 70 L200 70" fill="none" stroke="#ff5a5f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="20" y="32" font-family="Poppins, Arial" font-size="15" font-weight="700" fill="#fff">Recuperación</text>
   </g>
 

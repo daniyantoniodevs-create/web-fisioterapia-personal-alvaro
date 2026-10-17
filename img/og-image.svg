@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Álvaro Picazo Fisioterapia">
   <defs>
     <linearGradient id="ob" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0f2a43"/>
-      <stop offset="1" stop-color="#0e7490"/>
+      <stop offset="0" stop-color="#1b1214"/>
+      <stop offset="1" stop-color="#5c1220"/>
     </linearGradient>
     <linearGradient id="oa" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2dd4bf"/>
-      <stop offset="1" stop-color="#38bdf8"/>
+      <stop offset="0" stop-color="#ff5a5f"/>
+      <stop offset="1" stop-color="#ff8a7a"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#ob)"/>
@@ -14,10 +14,10 @@
   <circle cx="150" cy="560" r="200" fill="url(#oa)" opacity=".12"/>
   <g transform="translate(90 250)">
     <circle cx="40" cy="20" r="44" fill="url(#oa)"/>
-    <path d="M18 24c7-2 9-16 14-16s7 21 12 21 5-12 10-12" fill="none" stroke="#0f2a43" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 24c7-2 9-16 14-16s7 21 12 21 5-12 10-12" fill="none" stroke="#1b1214" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
   <text x="200" y="270" font-family="Poppins, Arial" font-size="64" font-weight="800" fill="#ffffff">Álvaro Picazo</text>
-  <text x="200" y="335" font-family="Poppins, Arial" font-size="40" font-weight="600" fill="#2dd4bf" letter-spacing="6">FISIOTERAPIA</text>
+  <text x="200" y="335" font-family="Poppins, Arial" font-size="40" font-weight="600" fill="#ff5a5f" letter-spacing="6">FISIOTERAPIA</text>
   <text x="200" y="410" font-family="Poppins, Arial" font-size="28" font-weight="400" fill="#cbd5e1">Fisioterapia deportiva · Readaptación · Portal del paciente</text>
   <text x="200" y="470" font-family="Poppins, Arial" font-size="24" font-weight="500" fill="#94a3b8">Albacete · Especialistas en ligamento cruzado</text>
 </svg>

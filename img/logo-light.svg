@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" role="img" aria-label="Álvaro Picazo Fisioterapia">
   <defs>
     <linearGradient id="lgl" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2dd4bf"/>
-      <stop offset="1" stop-color="#38bdf8"/>
+      <stop offset="0" stop-color="#ff5a5f"/>
+      <stop offset="1" stop-color="#ff8a7a"/>
     </linearGradient>
   </defs>
   <g>
     <circle cx="28" cy="28" r="24" fill="url(#lgl)"/>
-    <path d="M16 30c4-1 5-9 8-9s4 12 7 12 3-7 6-7" fill="none" stroke="#0f2a43" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="40" cy="20" r="3.2" fill="#0f2a43"/>
+    <path d="M16 30c4-1 5-9 8-9s4 12 7 12 3-7 6-7" fill="none" stroke="#1b1214" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="40" cy="20" r="3.2" fill="#1b1214"/>
   </g>
   <text x="62" y="26" font-family="Poppins, Arial, sans-serif" font-size="19" font-weight="700" fill="#ffffff">Álvaro Picazo</text>
-  <text x="62" y="44" font-family="Poppins, Arial, sans-serif" font-size="12.5" font-weight="500" letter-spacing="3" fill="#2dd4bf">FISIOTERAPIA</text>
+  <text x="62" y="44" font-family="Poppins, Arial, sans-serif" font-size="12.5" font-weight="500" letter-spacing="3" fill="#ff5a5f">FISIOTERAPIA</text>
 </svg>

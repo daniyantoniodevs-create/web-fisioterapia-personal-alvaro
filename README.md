@@ -64,6 +64,8 @@ haber completado el pago, se le redirige a finalizar la suscripción.
 │   ├── style.css       # Estilos de la web
 │   └── portal.css      # Estilos del portal
 ├── js/
+│   ├── knee-gl.js      # Rodilla 3D en WebGL (Three.js)
+│   ├── vendor/         # Three.js 0.160 (licencia MIT)
 │   ├── main.js         # Animaciones de la web
 │   ├── portal-data.js  # Datos, login y almacenamiento (localStorage)
 │   ├── portal-ui.js    # Utilidades de interfaz del portal
@@ -83,7 +85,28 @@ haber completado el pago, se le redirige a finalizar la suscripción.
 - Portal funcional con dos roles, gestión de vídeos y seguimiento de progreso.
 - Sin frameworks ni dependencias: carga rápida y fácil de mantener.
 
+## 🎨 Diseño (línea Clínica Graus)
+
+- Paleta roja/granate sobre casi negro, alineada con Clínica Graus, donde Álvaro
+  pasa consulta. Variables en `css/style.css` (`--brand`, `--wine`, `--dark`...).
+- **Rodilla 3D en WebGL** (`js/knee-gl.js`, con Three.js incluido en `js/vendor/`):
+  - En la portada se flexiona sola y un goniómetro marca el ángulo en vivo.
+  - En la sección de ligamento cruzado se gira, se pulsa cada estructura y se
+    mueve la flexión con un control deslizante.
+  - Si el navegador no tiene WebGL se muestra la versión CSS/SVG de respaldo.
+  - Usa módulos JS: hay que abrir la web con un servidor (ver arriba), no con
+    doble clic sobre `index.html`.
+- Sección «Lesiones de rodilla que trato» y «Cómo trabajamos tu rodilla».
+- SEO: título y descripción orientados a «fisioterapeuta rodilla Albacete»,
+  datos estructurados (`Physiotherapy`, `Person`, `FAQPage`), Open Graph con
+  imagen `img/og-image.jpg` y `sitemap.xml` actualizado.
+
 ## 📝 Notas para producción
+
+- **Pendiente:** dirección exacta de Clínica Graus (en `index.html`, marcada con
+  `PENDIENTE`) y confirmar horarios.
+- Los testimonios, casos de éxito y cifras son de ejemplo: hay que sustituirlos
+  por datos reales (con autorización por escrito de los pacientes) o quitarlos.
 
 - Los datos del portal se guardan en `localStorage` (demo). Para producción se
   conectaría una base de datos / backend real y autenticación segura.
